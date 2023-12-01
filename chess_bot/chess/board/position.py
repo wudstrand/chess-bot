@@ -33,8 +33,8 @@ class Position:
             raise ValueError(msg)
 
     def is_valid_position(self) -> bool:
-        valid_file = (0 <= self.x < Constants.number_of_files)
-        valid_rank = (0 <= self.y < Constants.number_of_ranks)
+        valid_file = (0 <= self.x < Constants.number_of_files.value)
+        valid_rank = (0 <= self.y < Constants.number_of_ranks.value)
         return valid_file and valid_rank
 
     def location(self) -> Tuple[str, int]:
