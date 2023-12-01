@@ -36,8 +36,8 @@ def starter_board() -> Board:
 
 def blank_board() -> Board:
     raw_board = [
-        [0 for _ in range(Constants.number_of_files)]
-        for file in range(Constants.number_of_ranks)
+        [0 for _ in range(Constants.number_of_files.value)]
+        for _ in range(Constants.number_of_ranks.value)
     ]
     return Board(raw_board=raw_board)
 

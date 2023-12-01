@@ -9,6 +9,7 @@ class Position:
     x: int
     y: int
 
+    # TODO: Refactor validation
     def __post_init__(self) -> None:
         self.validate_position()
 
@@ -27,7 +28,7 @@ class Position:
         return Position(x=self.x + x, y=self.y + y)
 
     def validate_position(self):
-        msg = f"Invalid position: must be contained in {Constants.number_of_files}x{Constants.number_of_ranks} grid."
+        msg = f"Invalid position: must be contained in {Constants.number_of_files.value}x{Constants.number_of_ranks.value} grid."
         if not self.is_valid_position():
             raise ValueError(msg)
 

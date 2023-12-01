@@ -17,9 +17,14 @@ class Piece:
         if marker == 0:
             return None
 
+        try:
+            position = Position.from_rank_and_file(rank_idx=rank_idx, file_idx=file_idx)
+        except ValueError as e:
+            return None
+
         return cls(
             piece_type=PieceType.from_marker(marker),
             color=Color.from_marker(marker),
-            position=Position.from_rank_and_file(rank_idx=rank_idx, file_idx=file_idx)
+            position=position
         )
 
