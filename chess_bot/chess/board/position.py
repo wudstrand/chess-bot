@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Tuple
 
-from src.chess.constant import Constants
+from chess_bot.chess.constant import Constants
 
 
 @dataclass
@@ -15,6 +15,13 @@ class Position:
     def __str__(self) -> str:
         file, rank = self.location()
         return f"{file}{rank}"
+
+    @staticmethod
+    def from_rank_and_file(rank_idx: int, file_idx: int) -> 'Position':
+        return Position(
+            x=file_idx,
+            y=rank_idx
+        )
 
     def move(self, x: int, y: int) -> "Position":
         return Position(x=self.x + x, y=self.y + y)
@@ -30,14 +37,14 @@ class Position:
         return valid_file and valid_rank
 
     def location(self) -> Tuple[str, int]:
-        rank = self.rank()
-        file = self.file()
-        return file, rank
+        return self.file, self.rank
 
+    @property
     def file(self) -> str:
         ordinal_value = ord("a") + self.x
         return chr(ordinal_value)
 
+    @property
     def rank(self) -> int:
         return self.y + 1
 

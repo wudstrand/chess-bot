@@ -11,3 +11,9 @@ class ColorInformation:
 class Color(Enum):
     WHITE = ColorInformation(name="white", mask=1)
     BLACK = ColorInformation(name="black", mask=-1)
+
+    @staticmethod
+    def from_marker(marker: int):
+        if marker > 0:
+            return Color.WHITE
+        return Color.BLACK
