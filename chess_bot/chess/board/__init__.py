@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
+from chess_bot.chess.board.position import Position
 from chess_bot.chess.piece import Piece
 from chess_bot.chess.constant import Constants
 
@@ -23,18 +24,24 @@ class Board:
                 pieces.append(maybe_piece)
         return [maybe_piece for maybe_piece in pieces if maybe_piece]
 
-    def get_piece_from_rank_and_file(self, file: str, rank: int) -> Optional[Piece]:
-        file_idx = ord(file) - ord('a')
-        rank_idx = rank - 1
-        return self.get_piece(file_idx=file_idx, rank_idx=rank_idx)
+    def get_piece(self, position: Position) -> Optional[Piece]:
+        return self._get_piece(file_idx=position.file.idx, rank_idx=position.rank.idx)
 
-    def get_piece(self, file_idx: int, rank_idx: int) -> Optional[Piece]:
+    def is_open(self, position: Position) -> bool:
+        return self._is_open(file_idx=position.file.idx, rank_idx=position.rank.idx)
+
+    def _get_piece(self, file_idx: int, rank_idx: int) -> Optional[Piece]:
         marker = self._raw_board[rank_idx][file_idx]
         return Piece.from_board(marker, rank_idx=rank_idx, file_idx=file_idx)
 
-    def is_open(self, file_idx: int, rank_idx: int) -> bool:
+    def _is_open(self, file_idx: int, rank_idx: int) -> bool:
         marker = self._raw_board[rank_idx][file_idx]
         return marker == 0
+
+    def __iter__(self):
+        for rank_idx, rank in enumerate(self._raw_board):
+            for file_idx, marker in enumerate(rank):
+                yield rank_idx, file_idx, marker
 
 
 def starter_board() -> Board:

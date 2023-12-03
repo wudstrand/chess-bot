@@ -1,6 +1,6 @@
 import unittest
 
-from chess_bot.chess.board import Board, blank_board, starter_board
+from chess_bot.chess.board import Board, blank_board, starter_board, Position
 from chess_bot.chess.constant import Constants
 from chess_bot.chess.enum.piece_type import PieceType
 
@@ -29,6 +29,16 @@ class BoardTest(unittest.TestCase):
         result = board.get_pieces()
         self.assertEqual(len(result), 0)
 
+        for rank_idx, file_idx, _ in board:
+            position = Position(rank_idx=rank_idx, file_idx=file_idx)
+            # get piece test
+            result = board.get_piece(position=position)
+            self.assertEqual(result, None)
+
+            # Is open test
+            result = board.is_open(position=position)
+            self.assertTrue(result)
+
     def test_starter_board(self):
         board = starter_board()
         result = board.get_pieces()
@@ -36,10 +46,23 @@ class BoardTest(unittest.TestCase):
 
     def _test_board_homogenous_pieces(self, piece_type: PieceType):
         board = self._generate_board_of_one_piece(marker=piece_type.value.marker)
+
+        # Get pieces test
         result = board.get_pieces()
         self.assertEqual(len(result), 64)
         for piece in result:
             self.assertEqual(piece.piece_type, piece_type)
+
+        for rank_idx, file_idx, _ in board:
+            position = Position(rank_idx=rank_idx, file_idx=file_idx)
+            # get piece test
+            result = board.get_piece(position=position)
+            self.assertEqual(result.position, position)
+            self.assertEqual(result.piece_type, piece_type)
+
+            # Is open test
+            result = board.is_open(position=position)
+            self.assertFalse(result)
 
     @staticmethod
     def _generate_board_of_one_piece(marker: int) -> Board:
