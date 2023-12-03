@@ -26,7 +26,7 @@ class BoardTest(unittest.TestCase):
 
     def test_blank_board(self):
         board = blank_board()
-        result = board.get_pieces()
+        result = board.pieces
         self.assertEqual(len(result), 0)
 
         for rank_idx, file_idx, _ in board:
@@ -41,14 +41,14 @@ class BoardTest(unittest.TestCase):
 
     def test_starter_board(self):
         board = starter_board()
-        result = board.get_pieces()
+        result = board.pieces
         self.assertEqual(len(result), 32)
 
     def _test_board_homogenous_pieces(self, piece_type: PieceType):
         board = self._generate_board_of_one_piece(marker=piece_type.value.marker)
 
         # Get pieces test
-        result = board.get_pieces()
+        result = board.pieces
         self.assertEqual(len(result), 64)
         for piece in result:
             self.assertEqual(piece.piece_type, piece_type)

@@ -1,5 +1,6 @@
 from typing import List
 
+from chess_bot.chess.board import Board
 from chess_bot.chess.piece import Piece
 from chess_bot.chess.board.position import Position
 
@@ -13,7 +14,7 @@ from chess_bot.chess.board.position import Position
 
 
 def generate_moves(
-        piece: Piece
+        piece: Piece,
 ) -> List[Position]:
     pass
 

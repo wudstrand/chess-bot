@@ -1,5 +1,6 @@
 from chess_bot.chess.board import starter_board
 from chess_bot.chess.enum.color import Color
+from chess_bot.chess.piece import Piece
 
 
 class Chess:
@@ -8,4 +9,5 @@ class Chess:
         self._turn = 1
         self._color_in_control = Color.WHITE
 
-
+    def generate_legal_moves(self, piece: Piece):
+        pass
