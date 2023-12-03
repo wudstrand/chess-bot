@@ -30,7 +30,9 @@ class BoardTest(unittest.TestCase):
         self.assertEqual(len(result), 0)
 
     def test_starter_board(self):
-        pass
+        board = starter_board()
+        result = board.get_pieces()
+        self.assertEqual(len(result), 32)
 
     def _test_board_homogenous_pieces(self, piece_type: PieceType):
         board = self._generate_board_of_one_piece(marker=piece_type.value.marker)
