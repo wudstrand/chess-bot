@@ -8,14 +8,86 @@ from chess_bot.chess.enum.piece_type import PieceType
 from chess_bot.chess.piece import Piece
 
 _valid_positions = [
-    [Position(x=0, y=0), Position(x=1, y=0), Position(x=2, y=0), Position(x=3, y=0), Position(x=4, y=0), Position(x=5, y=0), Position(x=6, y=0), Position(x=7, y=0)],
-    [Position(x=0, y=1), Position(x=1, y=1), Position(x=2, y=1), Position(x=3, y=1), Position(x=4, y=1), Position(x=5, y=1), Position(x=6, y=1), Position(x=7, y=1)],
-    [Position(x=0, y=2), Position(x=1, y=2), Position(x=2, y=2), Position(x=3, y=2), Position(x=4, y=2), Position(x=5, y=2), Position(x=6, y=2), Position(x=7, y=2)],
-    [Position(x=0, y=3), Position(x=1, y=3), Position(x=2, y=3), Position(x=3, y=3), Position(x=4, y=3), Position(x=5, y=3), Position(x=6, y=3), Position(x=7, y=3)],
-    [Position(x=0, y=4), Position(x=1, y=4), Position(x=2, y=4), Position(x=3, y=4), Position(x=4, y=4), Position(x=5, y=4), Position(x=6, y=4), Position(x=7, y=4)],
-    [Position(x=0, y=5), Position(x=1, y=5), Position(x=2, y=5), Position(x=3, y=5), Position(x=4, y=5), Position(x=5, y=5), Position(x=6, y=5), Position(x=7, y=5)],
-    [Position(x=0, y=6), Position(x=1, y=6), Position(x=2, y=6), Position(x=3, y=6), Position(x=4, y=6), Position(x=5, y=6), Position(x=6, y=6), Position(x=7, y=6)],
-    [Position(x=0, y=7), Position(x=1, y=7), Position(x=2, y=7), Position(x=3, y=7), Position(x=4, y=7), Position(x=5, y=7), Position(x=6, y=7), Position(x=7, y=7)],
+    [
+        Position(file_idx=0, rank_idx=0),
+        Position(file_idx=1, rank_idx=0),
+        Position(file_idx=2, rank_idx=0),
+        Position(file_idx=3, rank_idx=0),
+        Position(file_idx=4, rank_idx=0),
+        Position(file_idx=5, rank_idx=0),
+        Position(file_idx=6, rank_idx=0),
+        Position(file_idx=7, rank_idx=0)
+    ],
+    [
+        Position(file_idx=0, rank_idx=1),
+        Position(file_idx=1, rank_idx=1),
+        Position(file_idx=2, rank_idx=1),
+        Position(file_idx=3, rank_idx=1),
+        Position(file_idx=4, rank_idx=1),
+        Position(file_idx=5, rank_idx=1),
+        Position(file_idx=6, rank_idx=1),
+        Position(file_idx=7, rank_idx=1)
+    ],
+    [
+        Position(file_idx=0, rank_idx=2),
+        Position(file_idx=1, rank_idx=2),
+        Position(file_idx=2, rank_idx=2),
+        Position(file_idx=3, rank_idx=2),
+        Position(file_idx=4, rank_idx=2),
+        Position(file_idx=5, rank_idx=2),
+        Position(file_idx=6, rank_idx=2),
+        Position(file_idx=7, rank_idx=2)
+    ],
+    [
+        Position(file_idx=0, rank_idx=3),
+        Position(file_idx=1, rank_idx=3),
+        Position(file_idx=2, rank_idx=3),
+        Position(file_idx=3, rank_idx=3),
+        Position(file_idx=4, rank_idx=3),
+        Position(file_idx=5, rank_idx=3),
+        Position(file_idx=6, rank_idx=3),
+        Position(file_idx=7, rank_idx=3)
+    ],
+    [
+        Position(file_idx=0, rank_idx=4),
+        Position(file_idx=1, rank_idx=4),
+        Position(file_idx=2, rank_idx=4),
+        Position(file_idx=3, rank_idx=4),
+        Position(file_idx=4, rank_idx=4),
+        Position(file_idx=5, rank_idx=4),
+        Position(file_idx=6, rank_idx=4),
+        Position(file_idx=7, rank_idx=4)
+    ],
+    [
+        Position(file_idx=0, rank_idx=5),
+        Position(file_idx=1, rank_idx=5),
+        Position(file_idx=2, rank_idx=5),
+        Position(file_idx=3, rank_idx=5),
+        Position(file_idx=4, rank_idx=5),
+        Position(file_idx=5, rank_idx=5),
+        Position(file_idx=6, rank_idx=5),
+        Position(file_idx=7, rank_idx=5)
+    ],
+    [
+        Position(file_idx=0, rank_idx=6),
+        Position(file_idx=1, rank_idx=6),
+        Position(file_idx=2, rank_idx=6),
+        Position(file_idx=3, rank_idx=6),
+        Position(file_idx=4, rank_idx=6),
+        Position(file_idx=5, rank_idx=6),
+        Position(file_idx=6, rank_idx=6),
+        Position(file_idx=7, rank_idx=6)
+    ],
+    [
+        Position(file_idx=0, rank_idx=7),
+        Position(file_idx=1, rank_idx=7),
+        Position(file_idx=2, rank_idx=7),
+        Position(file_idx=3, rank_idx=7),
+        Position(file_idx=4, rank_idx=7),
+        Position(file_idx=5, rank_idx=7),
+        Position(file_idx=6, rank_idx=7),
+        Position(file_idx=7, rank_idx=7)
+    ],
 ]
 
 

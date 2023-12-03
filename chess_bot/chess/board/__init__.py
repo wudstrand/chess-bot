@@ -1,7 +1,14 @@
-from typing import List
+from dataclasses import dataclass
+from typing import List, Optional
 
 from chess_bot.chess.piece import Piece
 from chess_bot.chess.constant import Constants
+
+
+@dataclass
+class BoardState:
+    white_pieces: List[Piece]
+    black_pieces: List[Piece]
 
 
 class Board:
@@ -16,8 +23,18 @@ class Board:
                 pieces.append(maybe_piece)
         return [maybe_piece for maybe_piece in pieces if maybe_piece]
 
-    def make_move(self) -> 'Board':
-        pass
+    def get_piece_from_rank_and_file(self, file: str, rank: int) -> Optional[Piece]:
+        file_idx = ord(file) - ord('a')
+        rank_idx = rank - 1
+        return self.get_piece(file_idx=file_idx, rank_idx=rank_idx)
+
+    def get_piece(self, file_idx: int, rank_idx: int) -> Optional[Piece]:
+        marker = self._raw_board[rank_idx][file_idx]
+        return Piece.from_board(marker, rank_idx=rank_idx, file_idx=file_idx)
+
+    def is_open(self, file_idx: int, rank_idx: int) -> bool:
+        marker = self._raw_board[rank_idx][file_idx]
+        return marker == 0
 
 
 def starter_board() -> Board:

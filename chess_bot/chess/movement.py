@@ -11,29 +11,42 @@ from chess_bot.chess.board.position import Position
 #   - board
 #   - piece movement history (i.e. is the first move)
 
-def generate_moves(piece: Piece, depth: int = 1) -> List[Position]:
+
+def generate_moves(
+        piece: Piece
+) -> List[Position]:
     pass
 
 
-def _pawn_move(position: Position, depth: int = 1) -> List[Position]:
+def _pawn_moves(position: Position) -> List[Position]:
+    # Cases
+    # 1. First move - Can move up to two squares forward
+    # 2. en passant
     pass
 
 
-def _knight_move(position: Position, depth: int = 1) -> List[Position]:
+def _knight_moves(position: Position) -> List[Position]:
+    move_options = [(3, 1), (3, -1), (-3, 1), (-3, -1)]
+    return [position.move(file_delta=x, rank_delta=y) for x, y in move_options]
+
+
+def _bishop_moves(position: Position) -> List[Position]:
+    move_options = [(1, 1), (-1, 1), (1, -1), (-1, -1)]
     pass
 
 
-def _bishop_move(position: Position, depth: int = 1) -> List[Position]:
+def _rook_moves(position: Position) -> List[Position]:
+    move_options = [(1, 0), (-1, 0), (0, 1), (0, -1)]
     pass
 
 
-def _rook_move(position: Position, depth: int = 1) -> List[Position]:
+def _queen_moves(position: Position) -> List[Position]:
     pass
 
 
-def _queen_move(position: Position, depth: int = 1) -> List[Position]:
-    pass
-
-
-def _king_move(position: Position, depth: int = 1) -> List[Position]:
-    pass
+def _king_moves(position: Position) -> List[Position]:
+    move_options = [
+        (1, 0), (-1, 0), (0, 1), (0, -1),
+        (1, 1), (-1, 1), (1, -1), (-1, -1)
+    ]
+    return [position.move(file_delta=x, rank_delta=y) for x, y in move_options]
